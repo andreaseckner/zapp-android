@@ -7,11 +7,14 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <!-- TODO (1) Add a EditText field and give it a proper id and a hint  -->
+
     <Button
         android:id="@+id/hello_world_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Say 'Hello World!'" />
 
+    <!-- TODO (2) Add an additional button; this time use the onClick attribute to implement the click handler -->
 
 </LinearLayout>
