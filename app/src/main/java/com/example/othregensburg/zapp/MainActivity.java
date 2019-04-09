@@ -1,21 +1,28 @@
 package com.example.othregensburg.zapp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    // TODO (3) Create a TAG String constant TAG to store the name of the class
+    private final static String TAG = MainActivity.class.getSimpleName();
 
-    // TODO (4) Declare a property for the button
+    Button mHelloWorldButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // TODO (5) Assign the button from the layout to the class property
+        mHelloWorldButton = findViewById(R.id.hello_world_button);
 
-        // TODO (6) Create an anonymous OnClickListener and assign it to the button
-        // TODO (7) Log a message with the given TAG property and String "Hello World"
+        mHelloWorldButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "Hello World!");
+            }
+        });
     }
 }
