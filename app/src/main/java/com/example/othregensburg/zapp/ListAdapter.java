@@ -40,6 +40,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return mList.size();
     }
 
+    // TODO (1) Let the ViewHolder implement a View.OnClickListener
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         final CheckBox mCheckBox;
@@ -48,7 +50,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             super(itemView);
 
             mCheckBox = itemView.findViewById(R.id.checkbox);
+            // TODO (2) Set the OnCLickListener to the checkboxes
         }
 
+        // TODO (3) Show a Toast with position and state of the clicked checkbox
+
+        // TODO (4) Fix the issue with checkbox state of the recycled views which occurs after scrolling up and down
+            // Hint: Make use of a SpareBooleanArray
     }
 }
