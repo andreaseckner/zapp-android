@@ -1,0 +1,54 @@
+package com.example.othregensburg.zapp;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+
+import java.util.LinkedList;
+
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+    private final LinkedList<String> mList;
+
+    private LayoutInflater mInflater;
+
+
+    ListAdapter(Context context, LinkedList<String> list) {
+        mInflater = LayoutInflater.from(context);
+        this.mList = list;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
+        View mItemView = mInflater.inflate(R.layout.listitem, parent, false);
+        return new ViewHolder(mItemView);
+
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int position) {
+        String mCurrent = mList.get(position);
+        viewHolder.mCheckBox.setText(mCurrent);
+    }
+
+    @Override
+    public int getItemCount() {
+        return mList.size();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+
+        final CheckBox mCheckBox;
+
+        ViewHolder(@NonNull final View itemView) {
+            super(itemView);
+
+            mCheckBox = itemView.findViewById(R.id.checkbox);
+        }
+
+    }
+}

@@ -7,23 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- TODO (2) Delete TextView and add the layout element for the Recycler View -->
-
-    <!--
-        TODO (3) Create a new layout for the Recycler View list item
-        (res -> layout -> right click -> New -> Layout resource file)
-
-        * The new layout shall contain a CheckBox.
-        * Make sure that the root layout has a height of 'wrap_content'
-    -->
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </android.support.constraint.ConstraintLayout>

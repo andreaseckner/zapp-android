@@ -2,6 +2,8 @@ package com.example.othregensburg.zapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -11,8 +13,8 @@ public class MainActivity extends AppCompatActivity {
 
     private final LinkedList<String> mList = new LinkedList<>();
 
-    // TODO (4) Create a new class for the adapter which extends from RecyclerView.Adapter<CustomAdapter.ViewHolder>
-
+    private RecyclerView mRecyclerView;
+    private ListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +26,9 @@ public class MainActivity extends AppCompatActivity {
             mList.add(((char) ('A' + rnd.nextInt('Z' - 'A'))) + " " + Integer.toString(i));
         Collections.sort(mList);
 
-        // TODO (5) Create member variables and instantiate the Recycler View and the Adapter
-
-        // TODO (6) Set the new Adapter to the Recycler View
-
-        // TODO (7) Set a LayoutManager to the Recycler View
+        mRecyclerView = findViewById(R.id.recyclerview);
+        mAdapter = new ListAdapter(this, mList);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
