@@ -3,6 +3,7 @@ package com.example.othregensburg.zapp;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import java.util.Locale;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private final LinkedList<String> mList;
+    private SparseBooleanArray mItemStateArray = new SparseBooleanArray();
 
     private LayoutInflater mInflater;
 
@@ -35,6 +37,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int position) {
         String mCurrent = mList.get(position);
         viewHolder.mCheckBox.setText(mCurrent);
+
+        if (!mItemStateArray.get(position, false)) {
+            viewHolder.mCheckBox.setChecked(false);
+        } else {
+            viewHolder.mCheckBox.setChecked(true);
+        }
     }
 
     @Override
@@ -55,14 +63,17 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         @Override
         public void onClick(final View v) {
+
+            final Boolean mCheckboxState = mCheckBox.isChecked();
+
+            int adapterPosition = getAdapterPosition();
+            mItemStateArray.put(adapterPosition, mCheckboxState);
+
             Toast.makeText(v.getContext(),
                     String.format(Locale.GERMAN, "Position: %d is checked: %s",
-                            getLayoutPosition(), mCheckBox.isChecked()),
+                            getLayoutPosition(), mCheckboxState),
                     Toast.LENGTH_SHORT)
                     .show();
         }
-
-        // TODO (4) Fix the issue with checkbox state of the recycled views which occurs after scrolling up and down
-            // Hint: Make use of a SpareBooleanArray
     }
 }
