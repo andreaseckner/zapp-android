@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import java.util.LinkedList;
+import java.util.Locale;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private final LinkedList<String> mList;
@@ -40,9 +42,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return mList.size();
     }
 
-    // TODO (1) Let the ViewHolder implement a View.OnClickListener
-
-    class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         final CheckBox mCheckBox;
 
@@ -50,10 +50,17 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             super(itemView);
 
             mCheckBox = itemView.findViewById(R.id.checkbox);
-            // TODO (2) Set the OnCLickListener to the checkboxes
+            mCheckBox.setOnClickListener(this);
         }
 
-        // TODO (3) Show a Toast with position and state of the clicked checkbox
+        @Override
+        public void onClick(final View v) {
+            Toast.makeText(v.getContext(),
+                    String.format(Locale.GERMAN, "Position: %d is checked: %s",
+                            getLayoutPosition(), mCheckBox.isChecked()),
+                    Toast.LENGTH_SHORT)
+                    .show();
+        }
 
         // TODO (4) Fix the issue with checkbox state of the recycled views which occurs after scrolling up and down
             // Hint: Make use of a SpareBooleanArray
