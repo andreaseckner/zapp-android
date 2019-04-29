@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/menu_nav_drawer_group_1"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/menu_nav_item_travel_stream"
+            android:icon="@drawable/ic_action_airplane"
+            android:title="@string/nav_item_title_travel_stream" />
+
+        <item
+            android:id="@+id/menu_nav_items_music"
+            android:icon="@drawable/ic_action_music"
+            android:title="@string/nav_item_title_my_music" />
+
+        <item
+            android:id="@+id/menu_nav_item_books"
+            android:icon="@drawable/ic_action_book"
+            android:title="@string/nav_item_title_my_books" />
+    </group>
+
+    <group
+        android:id="@+id/menu_nav_drawer_group_2"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/menu_nav_item_settings"
+            android:icon="@drawable/ic_action_settings"
+            android:title="@string/nav_item_title_settings" />
+    </group>
+
+    <group
+        android:id="@+id/menu_nav_drawer_group_3"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/menu_nav_item_about"
+            android:icon="@drawable/ic_action_info"
+            android:title="@string/nav_item_title_about" />
+    </group>
+</menu>
