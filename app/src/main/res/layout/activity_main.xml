@@ -20,6 +20,10 @@
 
     </LinearLayout>
 
+    <!-- TODO (1) Add a new menu xml file and add some menu items -->
+    <!-- HINT: Make use of the icons existing in the drawable folder -->
+
+    <!-- TODO (2) Add previously created menu defined in xml with app:menu... -->
     <android.support.design.widget.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
