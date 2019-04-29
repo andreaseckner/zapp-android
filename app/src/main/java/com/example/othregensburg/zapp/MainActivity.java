@@ -65,29 +65,36 @@ public class MainActivity extends AppCompatActivity {
         // Check the first item in the NavigationView
         mNavigationView.getMenu().getItem(0).setChecked(true);
 
-        // TODO (2) Add a OnNavigationItemSelectedListener via NavigationView#setNavigationItemSelectedListener
-
-        // TODO (3a) Within the callback a) set the menu item as active (setChecked(...))
-
-        // TODO (3b) Within the callback b) switch to the selected fragment
-        // HINT: make use of the switchFragment() method
-
-        // TODO (3c) Within the callback c) call DrawerLayout#closeDrawers() to close the Drawer
+        // Once a menu item is selected replace fragment
+        mNavigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        menuItem.setChecked(true);
+                        switchFragment(menuItem.getItemId());
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    }
+                });
     }
 
     private void switchFragment(int menuItemId) {
 
-        // TODO (4) Get an instance of a FragmentManager
-
-        // TODO (5) Get an instance of a FragmentTransaction
-
-        // TODO (6) Set a custom animation for the transaction
-        // HINT: Make use of R.anim.alpha_transition_in and R.anim.alpha.transition_out and FragmentTransaction#setCustomAnimations
-
-        // TODO (7) Get the corresponding fragment for the menuItemId
-        // HINT: Make use of the getFragmentById method which takes the current fragment and the menuItemId as arguments
-
-        // TODO (8) Replace the Fragment and commit the transaction
+        // Get FragmentManager
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        // Start transaction
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        // Set custom animation
+        fragmentTransaction.setCustomAnimations(R.anim.alpha_transition_in, R.anim.alpha_transition_out);
+        // Get the current fragment which is in the container
+        Fragment containerFragment = fragmentManager.findFragmentById(R.id.main_container);
+        // Init the new fragment
+        Fragment newFragment = getFragmentById(containerFragment, menuItemId);
+        // If returned fragment != null -> replace it
+        if (newFragment != null) {
+            fragmentTransaction.replace(R.id.main_container, newFragment);
+            fragmentTransaction.commit();
+        }
     }
 
     private Fragment getFragmentById(Fragment containerFragment, int menuItemId) {
