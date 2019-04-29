@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupUiComponents() {
-        // TODO (5) Get a reference of the toolbar
+        mToolbar = findViewById(R.id.main_toolbar);
     }
 
     private void setupToolbar() {
-        // TODO (6) Set toolbar as ActionBar (setSupportActionBar)
+        setSupportActionBar(mToolbar);
     }
 }
