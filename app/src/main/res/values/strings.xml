@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">ZAPP</string>
 
+    <!-- Accessibility strings for DrawerToggle -->
+    <string name="open_drawer_accessibility_desc">Open navigation</string>
+    <string name="close_drawer_accessibility_desc">Close navigation</string>
+
     <!-- Nav drawer items -->
     <string name="nav_item_title_travel_stream">Travel Stream</string>
     <string name="nav_item_title_my_books">My Books</string>

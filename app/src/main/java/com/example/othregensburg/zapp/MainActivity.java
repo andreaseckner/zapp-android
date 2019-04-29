@@ -21,7 +21,11 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
 
-    // TODO(2) Add onPostCreate method to sync the drawer toggle state
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
+    }
 
     private void init() {
         setupUiComponents();
@@ -39,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupDrawerToggle() {
-        // TODO (1) Add ActionBarDrawerToggle and assign it to the drawer layout listener
+        mDrawerToggle = new ActionBarDrawerToggle(this,
+                mDrawerLayout, mToolbar, R.string.open_drawer_accessibility_desc,
+                R.string.close_drawer_accessibility_desc);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
     }
 }
