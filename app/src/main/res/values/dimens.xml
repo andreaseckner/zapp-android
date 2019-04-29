@@ -1,0 +1,18 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="default_elevation">4dp</dimen>
+
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_corner_radius">2dp</dimen>
+
+    <dimen name="music_card_vertical_margin_outer">16dp</dimen>
+    <dimen name="music_card_horizontal_margin_outer">16dp</dimen>
+    <dimen name="music_card_vertical_margin">8dp</dimen>
+    <dimen name="music_card_text_size_title">20sp</dimen>
+    <dimen name="music_card_text_size_desc">14sp</dimen>
+    <dimen name="music_card_image_size">88dp</dimen>
+    <dimen name="music_card_margin_to_cover">8dp</dimen>
+</resources>

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <!-- Branding colors -->
+    <!-- NOTE: Exception to the 500/700 recommendation -->
+    <color name="colorPrimary">@color/blue_grey_900</color>
+    <color name="colorPrimaryDark">#222D32</color>
+    <color name="colorAccent">@color/blue_500_primary</color>
+
+    <!-- Text Colors -->
+    <color name="text_color_title">#DE000000</color>
+    <color name="text_color_subtitle">#8A000000</color>
+    <color name="text_color_nav_drawer_item">@color/text_color_subtitle</color>
 </resources>

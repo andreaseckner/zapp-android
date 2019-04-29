@@ -19,6 +19,8 @@
             android:background="?attr/colorPrimary"
             android:elevation="4dp" />
 
+        <!-- TODO(1) Add frame layout with id main_container -->
+
     </LinearLayout>
 
     <android.support.design.widget.NavigationView
