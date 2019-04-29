@@ -1,6 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
+    <!-- TODO (3) Change parent theme to ...NoActionBar -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -9,3 +10,13 @@
     </style>
 
 </resources>
+
+<!-- TODO (7) Add a new styles.xml file for supporting devices beginning with api level 21 -->
+<!-- ( [Directory name:] values-v21) -->
+
+<!-- TODO (8) Copy content from this styles.xml file -->
+
+<!-- TODO (9) Add following lines to style.xml for api level 21+ -->
+
+<!--<item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+<!--<item name="android:statusBarColor">@android:color/transparent</item>-->
