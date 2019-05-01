@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Used when the navigation item is checked -->
+    <item android:color="@color/colorAccent" android:state_checked="true" />
+    <!-- Default text and icon color -->
+    <item android:color="@android:color/white" />
+</selector>

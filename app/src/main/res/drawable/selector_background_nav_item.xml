@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Used when the navigation item is checked -->
+    <item android:drawable="@color/grey_900" android:state_checked="true" />
+    <!-- Default background color -->
+    <item android:drawable="@android:color/transparent" />
+</selector>
