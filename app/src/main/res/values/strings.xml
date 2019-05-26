@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ZAPP</string>
+    <string name="counter_initial_value">0</string>
 </resources>
