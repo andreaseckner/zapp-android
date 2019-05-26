@@ -1,19 +1,20 @@
 package com.example.othregensburg.zapp;
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
-
-import java.util.Locale;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String COUNTER = "counter";
+    private Button mBtnNewStaffMember;
+    private Button mBtnStaffList;
 
-    private TextView mTextView;
-    private Integer mCounter;
+    // TODO (1) Create a new interface "StaffColumns" which describes the staff table name and columns
+    // TODO (2) Create a new class "StaffTable" providing SQL statements for creating and dropping the table
+    // TODO (3) Add another static method to describe all columns to the "StaffTable" class
+    // TODO (4) Add a new class "StaffDatabase" extending SQLiteOpenHelper and implement all necessary methods
 
 
     @Override
@@ -21,16 +22,37 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextView = findViewById(R.id.counterTextView);
-
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-
-        mCounter = prefs.getInt(COUNTER, 1);
-        mTextView.setText(String.format(Locale.GERMAN, "%d", mCounter));
-
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt(COUNTER, ++mCounter);
-        editor.apply();
-
+        init();
     }
+
+    private void init(){
+        setupUiComponents();
+        setListeners();
+    }
+
+    private void setListeners(){
+        mBtnNewStaffMember.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NewStaffMemberActivty.class);
+                startActivity(intent);
+            }
+        });
+
+        mBtnStaffList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, StaffListActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void setupUiComponents(){
+        mBtnNewStaffMember = findViewById(R.id.btn_new_staff_member);
+        mBtnStaffList = findViewById(R.id.btn_staff_list);
+    }
+
+
+
 }

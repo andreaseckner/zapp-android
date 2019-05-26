@@ -1,4 +1,25 @@
 <resources>
     <string name="app_name">ZAPP</string>
-    <string name="counter_initial_value">0</string>
+    <string name="title_new_staff_member">New staff member</string>
+    <string name="title_staff_members">Staff members</string>
+    <string name="btn_new_staff_member">New staff member</string>
+    <string name="btn_staff_members">Staff members</string>
+    <string name="btn_save_new_staff_member">Save new staff member</string>
+    <string name="edt_hint_first_name">First name</string>
+    <string name="edt_hint_last_name">Last name</string>
+    <string name="edt_hint_role">Role</string>
+
+    <string name="toast_error_empty_fields">Please enter a value in all fields</string>
+
+    <!-- Note: Match the following entries with textStyle="normal|bold|italic" -->
+    <!-- Roboto Regular -->
+    <string name="ff_roboto_regular" translatable="false">sans-serif</string>
+    <!-- Roboto Light -->
+    <string name="ff_roboto_light" translatable="false">sans-serif-light</string>
+    <!-- Roboto Condensed -->
+    <string name="ff_roboto_condensed" translatable="false">sans-serif-condensed</string>
+    <!-- Roboto Thin - requires 4.2 -->
+    <string name="ff_roboto_thin" translatable="false">sans-serif-thin</string>
+    <!-- Roboto Medium - requires 5.0 -->
+    <string name="ff_roboto_medium" translatable="false">sans-serif-medium</string>
 </resources>

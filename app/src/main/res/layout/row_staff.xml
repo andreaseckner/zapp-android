@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:elevation="4dp"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/row_staff_first_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@string/ff_roboto_medium"
+        android:textSize="16sp"
+        tools:text="Doe" />
+
+    <TextView
+        android:id="@+id/row_staff_last_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="John" />
+
+    <TextView
+        android:id="@+id/row_staff_role"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@string/ff_roboto_light"
+        tools:text="Jack of all trades" />
+
+</LinearLayout>
