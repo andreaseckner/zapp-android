@@ -9,5 +9,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // TODO (2) Get default SharedPreferences via PreferenceManager
+        // TODO (3) Load counter preference and update the text view
+        // TODO (4) Increase counter value and save it to SharedPreferences
     }
 }
