@@ -46,6 +46,11 @@ public class StaffListActivity extends AppCompatActivity {
 
     private ArrayList<StaffMember> getStaffMember() {
 
+        // TODO (13) Remove legacy code
+
+        // TODO (14) Read all table entries and return them as ArrayList
+        // HINT: databaseInstance.staffDao().getAll()
+
         SQLiteDatabase db = mStaffDatabase.getReadableDatabase();
 
         String[] projection = StaffTable.ALL_COLUMNS;

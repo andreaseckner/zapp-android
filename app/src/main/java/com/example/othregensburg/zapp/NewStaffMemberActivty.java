@@ -69,6 +69,13 @@ public class NewStaffMemberActivty extends AppCompatActivity {
 
     private void saveInDatabase() {
 
+        // TODO (10) Remove legacy code
+
+        // TODO (11) Create new StaffEntry object
+
+        // TODO (12) Write object to Room database
+        // HINT: databaseInstance.staffDao().insert(...)
+
         SQLiteDatabase db = mStaffDatabase.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
