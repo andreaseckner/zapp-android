@@ -1,5 +1,7 @@
 package com.example.othregensburg.zapp;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -8,10 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.othregensburg.zapp.db.StaffDatabase;
+import com.example.othregensburg.zapp.db.StaffTable;
+
 public class NewStaffMemberActivty extends AppCompatActivity {
 
     private Button mButtonSave;
-    // TODO (5) Create a member field for the StaffDatabase
+    private StaffDatabase mStaffDatabase;
     private EditText mEditTextFirstName;
     private EditText mEditTextLastName;
     private EditText mEditTextRole;
@@ -31,13 +36,13 @@ public class NewStaffMemberActivty extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_staff_member);
 
-        // TODO (6) Instantiate the StaffDatabase
+        mStaffDatabase = new StaffDatabase(this);
         init();
     }
 
     @Override
     protected void onDestroy() {
-        // TODO (9) Make sure to close the database before leaving the Activity
+        mStaffDatabase.close();
         super.onDestroy();
     }
 
@@ -64,11 +69,15 @@ public class NewStaffMemberActivty extends AppCompatActivity {
 
     private void saveInDatabase() {
 
-        // TODO (7) Get a writable SQLiteDatabase
+        SQLiteDatabase db = mStaffDatabase.getWritableDatabase();
 
-        // TODO (8) Insert the values from the textfields into the database
-        // HINT: Make use of the ContentValues class
-        // HINT: Column names are declared in the StaffTable class
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(StaffTable.FIRST_NAME, mEditTextFirstName.getText().toString());
+        contentValues.put(StaffTable.LAST_NAME, mEditTextLastName.getText().toString());
+        contentValues.put(StaffTable.ROLE, mEditTextRole.getText().toString());
+
+        db.insert(StaffTable.TABLE_NAME, null, contentValues);
+
     }
 
     private void setListeners(){

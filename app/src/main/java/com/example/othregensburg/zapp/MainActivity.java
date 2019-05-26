@@ -11,12 +11,6 @@ public class MainActivity extends AppCompatActivity {
     private Button mBtnNewStaffMember;
     private Button mBtnStaffList;
 
-    // TODO (1) Create a new interface "StaffColumns" which describes the staff table name and columns
-    // TODO (2) Create a new class "StaffTable" providing SQL statements for creating and dropping the table
-    // TODO (3) Add another static method to describe all columns to the "StaffTable" class
-    // TODO (4) Add a new class "StaffDatabase" extending SQLiteOpenHelper and implement all necessary methods
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,5 +1,7 @@
 package com.example.othregensburg.zapp;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -7,11 +9,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 
+import com.example.othregensburg.zapp.db.StaffDatabase;
+import com.example.othregensburg.zapp.db.StaffTable;
+
 import java.util.ArrayList;
 
 public class StaffListActivity extends AppCompatActivity {
 
-    // TODO (10) Create a member field for the StaffDatabase
+    StaffDatabase mStaffDatabase;
     private RecyclerView mRecyclerView;
 
     @Override
@@ -28,7 +33,7 @@ public class StaffListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_members);
-        // TODO (11) Instantiate the StaffDatabase
+        mStaffDatabase = new StaffDatabase(this);
 
         init();
     }
@@ -36,23 +41,35 @@ public class StaffListActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // TODO (17) Make sure to close the database before leaving the Activity
+        mStaffDatabase.close();
     }
 
     private ArrayList<StaffMember> getStaffMember() {
 
-        // TODO (12) Get a writable SQLiteDatabase
+        SQLiteDatabase db = mStaffDatabase.getReadableDatabase();
 
-        // TODO (13) Prepare the projection for the SQLite query
-        // HINT: Make use of the static ALL_COLUMNS method from the StaffTable class
+        String[] projection = StaffTable.ALL_COLUMNS;
 
-        // TODO (14) Make a query against the database to read all entries
+        Cursor cursor = db.query(
+                StaffTable.TABLE_NAME,  // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                null,                   // The columns for the WHERE clause
+                null,                   // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null                    // The sort order
+        );
 
         ArrayList<StaffMember> members = new ArrayList<>();
 
-        // TODO (15) Fill the ArrayList using the cursor to retreive all necessary data
-        // TODO (16) Do not forget to close the cursor appropriately!
-
+        while(cursor.moveToNext()) {
+            StaffMember member = new StaffMember(
+                    cursor.getString(cursor.getColumnIndex(StaffTable.FIRST_NAME)),
+                    cursor.getString(cursor.getColumnIndex(StaffTable.LAST_NAME)),
+                    cursor.getString(cursor.getColumnIndex(StaffTable.ROLE)));
+            members.add(member);
+        }
+        cursor.close();
 
         return members;
     }
