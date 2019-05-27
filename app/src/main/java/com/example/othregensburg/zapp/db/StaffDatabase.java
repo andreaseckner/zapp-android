@@ -1,51 +1,31 @@
 package com.example.othregensburg.zapp.db;
 
+import android.arch.persistence.room.Database;
+import android.arch.persistence.room.Room;
+import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
-// TODO (6) Let StaffDatabase extend from RoomDatabase instead of SQLiteOpenHelper
-// TODO (7) Add proper annotations
+@Database(entities = {StaffMember.class}, version = 1)
+public abstract class StaffDatabase extends RoomDatabase {
 
-// TODO (8) Use the Singleton pattern to make sure that there is only one Database object at runtime
+    private static final String DATABASE_NAME = "staff";
 
-/* HINT
+    // For Singleton instantiation
+    private static final Object LOCK = new Object();
+    private static volatile StaffDatabase sInstance;
 
-// For Singleton instantiation
-private static final Object LOCK = new Object();
-private static volatile EmployeeDatabase sInstance;
-
-public static EmployeeDatabase getInstance(Context context) {
-    if (sInstance == null) {
-        synchronized (LOCK) {
-            if (sInstance == null) {
-                // TODO (9) Create database and allow Main Thread Queries
-                sInstance = [...]
+    public static StaffDatabase getInstance(Context context) {
+        if (sInstance == null) {
+            synchronized (LOCK) {
+                if (sInstance == null) {
+                    sInstance = Room.databaseBuilder(context.getApplicationContext(),
+                            StaffDatabase.class, StaffDatabase.DATABASE_NAME).
+                            allowMainThreadQueries().build();
+                }
             }
         }
-    }
-    return sInstance;
-}
-*/
-
-
-public class StaffDatabase extends SQLiteOpenHelper {
-
-    private static final String DATABASE_NAME = "Staff.db";
-    private static final int DATABASE_VERSION = 1;
-
-    public StaffDatabase(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        return sInstance;
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(StaffTable.SQL_CREATE);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL(StaffTable.SQL_DROP);
-        onCreate(sqLiteDatabase);
-    }
+    public abstract StaffDao staffDao();
 }

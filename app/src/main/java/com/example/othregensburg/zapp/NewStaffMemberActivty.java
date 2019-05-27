@@ -1,7 +1,5 @@
 package com.example.othregensburg.zapp;
 
-import android.content.ContentValues;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -11,12 +9,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.othregensburg.zapp.db.StaffDatabase;
-import com.example.othregensburg.zapp.db.StaffTable;
+import com.example.othregensburg.zapp.db.StaffMember;
 
 public class NewStaffMemberActivty extends AppCompatActivity {
 
     private Button mButtonSave;
-    private StaffDatabase mStaffDatabase;
     private EditText mEditTextFirstName;
     private EditText mEditTextLastName;
     private EditText mEditTextRole;
@@ -36,13 +33,11 @@ public class NewStaffMemberActivty extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_staff_member);
 
-        mStaffDatabase = new StaffDatabase(this);
         init();
     }
 
     @Override
     protected void onDestroy() {
-        mStaffDatabase.close();
         super.onDestroy();
     }
 
@@ -69,22 +64,14 @@ public class NewStaffMemberActivty extends AppCompatActivity {
 
     private void saveInDatabase() {
 
-        // TODO (10) Remove legacy code
 
-        // TODO (11) Create new StaffEntry object
+        StaffMember newStaffEntry = new StaffMember(
+                mEditTextFirstName.getText().toString(),
+                mEditTextLastName.getText().toString(),
+                mEditTextRole.getText().toString()
+        );
 
-        // TODO (12) Write object to Room database
-        // HINT: databaseInstance.staffDao().insert(...)
-
-        SQLiteDatabase db = mStaffDatabase.getWritableDatabase();
-
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(StaffTable.FIRST_NAME, mEditTextFirstName.getText().toString());
-        contentValues.put(StaffTable.LAST_NAME, mEditTextLastName.getText().toString());
-        contentValues.put(StaffTable.ROLE, mEditTextRole.getText().toString());
-
-        db.insert(StaffTable.TABLE_NAME, null, contentValues);
-
+        StaffDatabase.getInstance(this).staffDao().insert(newStaffEntry);
     }
 
     private void setListeners(){

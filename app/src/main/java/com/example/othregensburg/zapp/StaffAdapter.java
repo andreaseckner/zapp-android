@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.othregensburg.zapp.db.StaffMember;
+
 import java.util.ArrayList;
 
 public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> {
@@ -41,9 +43,9 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(StaffAdapter.ViewHolder holder, int position) {
         StaffMember member = mItems.get(position);
-        holder.mTextViewFirstName.setText(member.getFirstName());
-        holder.mTextViewLastName.setText(member.getLastName());
-        holder.mTextViewRole.setText(member.getRole());
+        holder.mTextViewFirstName.setText(member.firstName);
+        holder.mTextViewLastName.setText(member.lastName);
+        holder.mTextViewRole.setText(member.role);
     }
 
     @Override
